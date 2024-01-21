@@ -1,0 +1,408 @@
+.body {
+    font-family: Arial;
+    background-color: #f0f0f3;
+    background-image: url("https://yizhakeliezer.github.io/EDI/storenext.png");
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position: revert;
+    color: white;
+    width: 30vw;
+}
+
+
+.AllData {
+    background-color: white;
+    position: absolute;
+    right: 45px;
+    top: 20px;
+    width: 450px;
+    height: 350px;
+    border: 1px solid #bdb8b8;
+    border-radius: 4px;
+    display: none;
+
+}
+
+#fileChek {
+    /*background-color: #383434;*/
+    /*color: #d0d0d0;*/
+    background-color: #fffcfc;
+    color: #0056ff;
+    text-align: left;
+    position: absolute;
+    top: 23px;
+    /*right: 1100px;*/
+    width: 500px;
+    height: 600px;
+    border-radius: 4px;
+    border: 5px solid #d5d2d2;
+    overflow: auto;
+    white-space: pre;
+    display: none;
+    right: 520px;
+    outline: none;
+}
+
+#Contrastdark {
+    color: #ffffff;
+    background-color: #524d4d;
+    width: 45px;
+    height: 33px;
+    padding: 7px;
+    margin-left: 57px;
+    border-radius: 12px;
+    border: 3px solid #d5d2d2;
+}
+
+#Contrastbright {
+    color: #524d4d;
+    background-color: #fffdfd;
+    width: 45px;
+    height: 33px;
+    padding: 7px;
+    margin-left: 122px;
+    border-radius: 12px;
+    border: 3px solid #d5d2d2;
+    position: absolute;
+    top: 81px;
+}
+
+/*#resultsFile {*/
+/*    background-color: #ffffff;*/
+/*    position: absolute;*/
+/*    right:520px;*/
+/*    top: 20px;*/
+/*    width:500px;*/
+/*    height:800px;*/
+/*    border: 10px solid #a8bceb;*/
+/*    border-radius: 4px;*/
+/*    display: none;*/
+/*    text-align: right;*/
+/*}*/
+
+/*#resultsFile li{*/
+/*    color: #413939;*/
+/*    list-style-type: none;*/
+/*    font-weight: bold;*/
+/*    font-size: 20px;*/
+/*    position: relative;*/
+/*    top: 80px;*/
+/*    right: 30px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+
+/*#resultsFile h1{*/
+/*    position: absolute;*/
+/*    left: 36%;*/
+/*    top: 2%;*/
+/*    font-size: 30px;*/
+/*    color: #4a4a4d;*/
+/*border-bottom: 2px solid #4CAF50;*/
+/*display: inline;*/
+/*    padding-bottom: 3px;*/
+/*}*/
+
+
+#inputBoxData {
+    display: none;
+}
+
+.inputBox input {
+    color: #2d3cc7;
+    font-weight: bold;
+    height: 1%;
+    padding: 15px;
+    background-color:white;
+    border: 1px solid black;
+    border-radius: 3px;
+    position: absolute;
+    left: 70px;
+    text-align: right;
+
+
+}
+
+
+.inputBox {
+    position: absolute;
+    top: 70px;
+}
+
+
+#menuTypeStructure {
+    color: #2d3cc7;
+    font-weight: bold;
+    height: 8%;
+    width: 20%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    position: absolute;
+    top: 21%;
+    left: 65%;
+    text-align: right;
+
+}
+
+
+#menuTypefile {
+    color: #2d3cc7;
+    font-weight: bold;
+    height: 8%;
+    width: 20%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    position: absolute;
+    top: 36%;
+    right: 15%;
+    text-align: right;
+}
+
+
+.AllData h1 {
+    position: absolute;
+    left: 71%;
+    top: 1%;
+    font-size: 20px;
+    color: #4d4a4a;
+    border-bottom: 2px solid #4CAF50;
+    display: inline;
+    padding-bottom: 3px;
+
+}
+
+
+#messageRuslt1 {
+    background-color: #ffffff;
+    position: absolute;
+    /*right:520px;*/
+    top: 20px;
+    width: 500px;
+    height: 800px;
+    border: 7px solid #fbb7b7;
+    border-radius: 4px;
+    display: none;
+    text-align: right;
+    overflow: auto;
+    right: 1070px;
+}
+
+
+#messageRuslt1 h1 {
+
+    position: relative;
+    left: -155px;
+    top: 15px;
+    font-size: 30px;
+    color: #4d4a4a;
+    /*border-bottom: 2px solid  #4d4a4a;*/
+    display: inline;
+    padding-bottom: 3px;
+
+}
+
+
+#messageRuslt {
+    position: relative;
+    /*/right: 115px;/*/
+    top: 45px;
+    font-size: 17px;
+    color: #4d4a4a;
+    text-align: right;
+    color: #e54141;
+    text-indent: 0;
+    text-align: center;
+
+}
+
+
+.titelUpFile {
+    position: absolute;
+    bottom: 320px;
+}
+
+
+.upFile {
+    background-color: white;
+    border-radius: 4px;
+    /*/display: none;/*/
+}
+
+
+#titelFile {
+    position: absolute;
+    left: 85%;
+    top: 1%;
+    font-size: 20px;
+    color: #4d4a4a;
+    border-bottom: 2px solid #4CAF50;
+    display: inline;
+    padding-bottom: 3px;
+    display: none;
+}
+
+
+#drop-zone {
+    border: 2px dashed #8430a2;
+    border-radius: 10px;
+    padding: 3px;
+    text-align: center;
+    cursor: pointer;
+    /*background-color: white;*/
+    color: #4d4a4a;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    width: 385px;
+    height: 280px;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
+
+
+#drop-zone:hover {
+    border-color: #317f81;
+}
+
+#file-input {
+    display: none;
+}
+
+
+#file-name {
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+
+#upload-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    /*background-color: #575151;*/
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+}
+
+#icons {
+    color: #4CAF50;
+    font-size: 70px;
+    position: relative;
+    top: 15px
+}
+
+
+#icons:hover {
+    color: #1f6411;
+    transform: scale(1.2);
+}
+
+#upload-iconDiv {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 35px;
+    background-color: #3f4fd3;
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+
+}
+
+#upload-iconDiv:hover {
+    background-color: #080051;
+
+}
+
+
+.iconAndhandleDrop {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 20px;
+}
+
+
+#retailer {
+
+    text-align: right;
+
+}
+
+
+#messageRusltFromFile {
+    background-color: white;
+    position: absolute;
+    right: 511px;
+    top: 385px;
+    width: 230px;
+    height: 250px;
+    border: 1px solid #bdb8b8;
+}
+
+
+#messageRusltFromFile1 h {
+    position: absolute;
+    right: 540px;
+    top: 405px;
+    font-size: 20px;
+    color: #4d4a4a;
+    border-bottom: 2px solid #4CAF50;
+    display: inline;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#selectedValue {
+    padding: 10px;
+    width: 200px;
+}
+
+.options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    background-color: #d3d3d3;
+    border: 1px solid #ccc;
+    color: black;
+}
+
+.options-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.options-list li:hover {
+    background-color: #020202;
+}
+
+
+.inputBox i {
+    display: none;
+}
+
+
+.moreFile {
+    display: none;
+}

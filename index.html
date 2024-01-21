@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edi</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="chekFileFletSupdes.js"></script>
+    <script type="text/javascript" src="chekFileHashavshevtSupdes.js"></script>
+    <script type="text/javascript" src="Contrast.js"></script>
+    <!--    Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<!--Activation of the test by an event when the user presses enter-->
+<body class="body" onkeydown="checkEnter(event)">
+<!--select of message types-->
+<div class="AllData">
+    <h1>פרטי התעודה</h1>
+    <div class="selectType">
+        <!--pormat file-->
+        <label for="fileStructure"></label>
+        <select name="menuTypeStructure" id="menuTypeStructure">
+            <option value="fileStructure">מבנה המסר</option>
+            <option value="hashavshevt">חשבשבת</option>
+            <option value="fletFile">flet file</option>
+
+        </select>
+        <!--        type file-->
+        <label for="fileType"></label>
+        <select name="menuTypefile" id="menuTypefile">
+            <option value="fileType">סוג המסר</option>
+            <option value="supdes">משלוח</option>
+            <option value="order">הזמנה</option>
+            <option value="mmdr">כניסה</option>
+            <option value="return">החזרה</option>
+        </select>
+    </div>
+    <!--input from user and icons-->
+    <div class="inputBox">
+        <i class="fa-solid fa-x" style="color: #fa0000;font-size: 15px;position:absolute; left: 20px;top: 10px"
+           id="retailerIconX"></i>
+        <i class="fa-solid fa-check" style="color: #54f000;font-size: 15px;position:absolute; left: 20px;top: 10px"
+           id="retailerIconV"></i>
+        <input type="text" id="retailer" list="jsonValuesRetailer" placeholder="(חובה) בחר את רשת התעודה">
+        <br><br><br>
+        <i class="fa-solid fa-x" style="color: #fa0000;font-size: 15px;position:absolute; left: 20px;top: 65px"
+           id="supplierIconX"></i>
+        <i class="fa-solid fa-check" style="color: #54f000;font-size: 15px;position:absolute; left: 20px;top: 65px"
+           id="supplierIconV"></i>
+        <label for="supplier"></label>
+        <input type="text" id="supplier" placeholder="(חובה) בחר את ספק התעודה" list="jsonValues">
+        <br><br><br>
+        <i class="fa-solid fa-x" style="color: #fa0000;font-size: 15px;position:absolute; left: 20px;top: 120px"
+           id="messageIconX"></i>
+        <i class="fa-solid fa-check" style="color: #54f000;font-size: 15px;position:absolute; left: 20px;top: 120px"
+           id="messageIconV"></i>
+        <input type="text" id="message" placeholder="(אופציונלי) הזן מספר תעודה"
+        ><br><br><br>
+        <i class="fa-solid fa-x" style="color: #fa0000;font-size: 15px;position:absolute; left: 20px;top: 175px"
+           id="supplierSubnetNumberIconX"></i>
+        <i class="fa-solid fa-check" style="color: #54f000;font-size: 15px;position:absolute; left: 20px;top: 175px"
+           id="supplierSubnetNumberIconV"></i>
+        <input type="text" id="supplierSubnetNumber" placeholder="הזן מספר תת ספק(אופציונלי)"
+        ><br><br><br>
+        <i class="fa-solid fa-x" style="color: #fa0000;font-size: 15px;position:absolute; left: 20px;top: 230px"
+           id="branchRetailerIconX"></i>
+        <i class="fa-solid fa-check" style="color: #54f000;font-size: 15px;position:absolute; left: 20px;top: 230px"
+           id="branchRetailerIconV"></i>
+        <input type="text" id="branchRetailer" placeholder="(אופציונלי) edi הזן מספר סניף"
+        ><br><br><br>
+    </div>
+    <br><br>
+</div>
+<br>
+<!--Show the user the choice of Retailer and supplier selected from a json file-->
+<div id="inputBoxData" >
+    <label for="selectedValue"></label>
+    <input type="text" id="selectedValue" readonly style="position: absolute;top: 183px; right: 220px;
+        outline: none; text-align:right;padding: 0px;width: 190px;height: 13px; color: #2d3cc7;font-weight: bold;border:none;">
+    <label for="selectedValueRetailer"></label>
+    <input type="text" id="selectedValueRetailer" readonly style="position: absolute;top: 128px; right: 220px;
+        outline: none;padding: 0px;width: 190px; height: 13px;text-align:right; color: #2d3cc7;font-weight: bold;border: none;">
+
+    <datalist id="jsonValues"></datalist>
+    <datalist id="jsonValuesRetailer"></datalist>
+</div>
+<!--message Ruslt-->
+<div id="messageRuslt1">
+    <h1 class="reulstTest">תוצאות הבדיקה</h1>
+    <p id="messageRuslt"></p>
+</div>
+<br><br><br>
+<!--multiple certificates-->
+<h4 class="moreFile" style="position: absolute ;font-size:12px;color: red;;right: 230px;top:223px">הזן מספר תעודה מתוך
+    תעודות מרובות</h4>
+<!--up file input+drop-->
+<div class="upFile">
+    <h1 id="titelFile">קבצים</h1>
+    <div class="files">
+        <!--drop file+up file-->
+        <div id="drop-zone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
+            <!--Paragraph of the initial screen-->
+            <div class="titelUpFile" style="display: block">
+                <h1 style="font-size: 40px;color: #858a85;position: relative;right: 6px" id="titelUpFileH"> ברוכים הבאים למסך EDI בדיקות
+                    מסרי </h1>
+                <p7 style="font-size:23px;color: #858a85;position: relative;top:-20px;right: 9px" id="titelUpFileP">אנא בחרו או גררו קובץ
+                    שברצונכם לבדוק
+                </p7>
+            </div>
+            <!--Upload button-->
+            <button id="upload-icon" onclick="triggerFileInput()"></button>
+            <!--File upload icon+css-->
+            <div class="iconAndhandleDrop">
+                <i class="material-icons upload-icon" id="icons" onclick="triggerFileInput()"
+                 >cloud_upload</i>
+                <p style="position: relative;top:-10px;font-size: 20px;" id="iconAndhandleDropP"
+                   onclick="triggerFileInput()">גרור קובץ לכאן
+                    <br>או</p>
+            </div>
+            <!--     Just the button's div-->
+            <button id="upload-iconDiv" onclick="triggerFileInput()">בחר קובץ</button>
+            <!--The name of the uploaded file+css-->
+            <div id="file-name" style=" display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 0px;
+      position: relative;
+      top: 55%;
+      /*right: 250px;*/
+      font-size: 15px;
+      color: #ff0000;
+    display: none;"></div>
+        </div>
+        <!--input to select a file-->
+        <input type="file" id="file-input" onchange="handleFileInput(event)"/>
+    </div>
+
+</div>
+
+
+<!--<input type="text" id="searchInput" list="optionsList" oninput="updateOptions()">-->
+<!--<div class="divOptionsList">-->
+<!--    <datalist id="optionsList">-->
+<!--        <option value="7290027600007">-שופרסל</option>-->
+<!--        <option value="7290058140886">-יינות ביתן</option>-->
+<!--        <option value="7290058140886">-סמארט סרוייס</option>-->
+<!--        <option value="7290058140886">-אל דוד קמעונאות</option>-->
+<!--        <option value="7290058140886">-ליאור עדיקה</option>-->
+<!--        <option value="7290058140886">-סופר טל</option>-->
+<!--        <option value="7290058140886">-סופר לב</option>-->
+<!--        <option value="7290058140886">-שמואל שפע ברכה</option>-->
+<!--        <option value="7290058140886">-מעדני מניה</option>-->
+<!--        <option value="7290058140886">-ד.נ קמעונאות</option>-->
+<!--        <option value="7290058140886">-טסה שוקולד</option>-->
+<!--        <option value="7290058140886">-מעדני גורמה</option>-->
+<!--        <option value="7290058140886">-בול מרקט</option>-->
+<!--        <option value="7290058140886">-סאלח דבאח</option>-->
+<!--        <option value="7290058140886">-פוד מאסטר</option>-->
+<!--        <option value="7290058140886">-קשת גיבורים</option>-->
+<!--        <option value="7290058140886">-האחים יעקובי</option>-->
+<!--        <option value="7290785400000">-קשת טעמים</option>-->
+<!--        <option value="7290058206902">-קולינאריק</option>-->
+<!--        <option value="7290393000005">-טיב טעם</option>-->
+<!--        <option value="7290058186181">-עדן טבע</option>-->
+<!--        <option value="7290058140886">-חצי חינם</option>-->
+<!--        <option value="7290058140886">-יוחננוף</option>-->
+<!--        <option value="7290058140886">-רמי לוי</option>-->
+<!--        <option value="7290058140886">-ב.ה לוי</option>-->
+<!--        <option value="7290737000005">-מנטה</option>-->
+<!--        <option value="7290058160372">-יילו</option>-->
+<!--        <option value="7290661400001">-מחסני השוק</option>-->
+<!--        <option value="7290058140886">-המרכז הקמעונאי למזון</option>-->
+<!--        <option value="7290058214044">-סיטונאות רחמים</option>-->
+<!--        <option value="7290058140886">-פרש מרקט</option>-->
+<!--        <option value="7290058140886">-מרקט בעיר</option>-->
+<!--        <option value="7290058140886">-מחסני להב ספיר דן</option>-->
+<!--        <option value="7290058140886">-מרכז המזון ירכא</option>-->
+<!--        <option value="7290058140886">-סופר יודה</option>-->
+<!--        <option value="7290058140886">-מיקה תפעול תחנות דלק</option>-->
+<!--        <option value="7290058140886">-ספאר ישראל</option>-->
+<!--        <option value="7290058140886">-מחסני מזון חינם פלוס</option>-->
+<!--        <option value="7290492000005">-דור אלון/AM PM/אלונית</option>-->
+<!--        <option value="7290058140886">-סופר ברקת</option>-->
+<!--        <option value="7290058140886">-נתיב החסד</option>-->
+<!--        <option value="7290058213818">-מלונות פתאל</option>-->
+<!--        <option value="7290058140886">-טבע ספורט קסטל</option>-->
+
+
+<!--        <option value="7290058216161">-אר.טו.אמ. קורפוראשיין</option>-->
+<!--        <option value="7290058140886">-אהבת חסד</option>-->
+<!--        <option value="7290058140886">-מרב מזון כל אושר עד</option>-->
+<!--        <option value="7290058237807">-משקאות חינאוי</option>-->
+<!--        <option value="7290058140886">-סופר קופיקס</option>-->
+<!--        <option value="7290639000004">-סטופ מרקט</option>-->
+<!--        <option value="7290058140886">ח.נ.ח אקספרס בע"מ (הרמיטאז')</option>-->
+<!--        <option value="7290058140886">-בנא משקאות</option>-->
+<!--        <option value="7290058140886">-זול ובגדול</option>-->
+<!--        <option value="7290058140886">-שיווק רוסמן</option>-->
+<!--        <option value="7290058140886">-הסל שלי</option>-->
+<!--        <option value="7290058140886">-מזוז אליהו ובניו</option>-->
+<!--        <option value="7290058140886">-פוליצר</option>-->
+<!--        <option value="7290058140886">-חסד לאלפים</option>-->
+<!--        <option value="7290058140886">-אניס בשביל הטבע</option>-->
+<!--        <option value="7290058140886">-דיוטי פארם</option>-->
+<!--        <option value="7290058140886">-צ'וסחא מרקט</option>-->
+<!--        <option value="7290058140886">-שאולי פמילי מרקט</option>-->
+<!--        <option value="7290058234172">-מעיין נציגויות</option>-->
+<!--        <option value="7290058140886">-אייזיקס מעדני גורמה</option>-->
+<!--        <option value="7290058140886">-סופר רפאל</option>-->
+<!--        <option value="7290455000004">-ח.כהן סוכנות מזון</option>-->
+<!--        <option value="7290058253678">-ח.כהן יבוא שיווק</option>-->
+<!--        <option value="7290058224357">-פודנט</option>-->
+<!--        <option value="7290058140886">-סופר אשכול</option>-->
+<!--        <option value="7290058213559">-היפר ליפסקר</option>-->
+<!--        <option value="7290058140886">-ח.י מעדני גורמה</option>-->
+<!--        <option value="7290058140886">-סופר בונוס</option>-->
+
+
+<!--    </datalist>-->
+<!--</div>-->
+
+<!--<div id="resultsFile">-->
+<!--&lt;!&ndash;    <h1>פרטי התעודה</h1>&ndash;&gt;-->
+<!--    <ul >-->
+<!--        <li id="resultsFileSupllier"></li>-->
+<!--        <li id="resultsFileRetailer"></li>-->
+<!--        <li id="resultsFileNumMessage"></li>-->
+<!--        <li id="resultsFileNumSupplierSubnetNumber"></li>-->
+<!--        <li id="resultsFileNumBranchRetailer"></li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<textarea id="fileChek"></textarea>
+
+
+
+
+
+
+<div id="Contrastdark" onclick="darkMode()">dark mode</div>
+<div id="Contrastbright" onclick="brightMode()">light mode</div>
+
+
+
+<script>
+
+
+
+    function checkEnter(event) {
+        const AllData = document.querySelector('.AllData');
+        if (AllData.style.display === "block") {
+            if (event.key === 'Enter') {
+                var selectedOption = document.getElementById("menuTypeStructure").value;
+                if (selectedOption === "fileStructure") {
+                    alert("לא נבחר מבנה המסר לבדיקה");
+                } else if (selectedOption === "fletFile") {
+                    chekFileFletSupdes();
+                } else if (selectedOption === "hashavshevt") {
+                    chekFileHashavshevtSupdes();
+                }
+
+            }
+
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("supplier");
+        const selectedValueInput = document.getElementById("selectedValue");
+
+        // Fetch data from JSON file (replace 'data.json' with your file)
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Populate the datalist with values from the JSON file
+                populateDatalist(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        function populateDatalist(data) {
+            const datalist = document.getElementById("jsonValues");
+
+            // Clear previous options
+            datalist.innerHTML = '';
+
+            // Add options based on the data
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item.key;
+                option.dataset.value = item.value; // Set the data-value attribute
+                datalist.appendChild(option);
+            });
+        }
+
+        searchInput.addEventListener("input", function () {
+            const inputValue = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+            const datalist = document.getElementById("jsonValues");
+
+            // Find the selected value in the datalist based on key or value
+            const selectedOption = Array.from(datalist.options).find(option =>
+                option.value.toLowerCase() === inputValue || option.dataset.value.toLowerCase() === inputValue
+            );
+
+            if (selectedOption) {
+                // If a matching value is found, update the selected value input with the key
+                selectedValueInput.value = selectedOption.value;
+            } else {
+                // Clear the selected input value if no match is found
+                selectedValueInput.value = '';
+            }
+        });
+
+        searchInput.addEventListener("change", function () {
+            const inputValue = searchInput.value;
+            const datalist = document.getElementById("jsonValues");
+
+            // Find the selected value in the datalist
+            const selectedOption = Array.from(datalist.options).find(option => option.value === inputValue);
+
+            if (selectedOption) {
+                // Update the search input with the selected key's value
+                searchInput.value = selectedOption.dataset.value;
+            }
+        });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("retailer");
+        const selectedValueInput = document.getElementById("selectedValueRetailer");
+
+        // Fetch data from JSON file (replace 'data.json' with your file)
+        fetch('retailerData.json')
+            .then(response => response.json())
+            .then(data => {
+                // Populate the datalist with values from the JSON file
+                populateDatalist(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        function populateDatalist(data) {
+            const datalist = document.getElementById("jsonValuesRetailer");
+
+            // Clear previous options
+            datalist.innerHTML = '';
+
+            // Add options based on the data
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item.key;
+                option.dataset.value = item.value; // Set the data-value attribute
+                datalist.appendChild(option);
+            });
+        }
+
+        searchInput.addEventListener("input", function () {
+            const inputValue = searchInput.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+            const datalist = document.getElementById("jsonValuesRetailer");
+
+            // Find the selected value in the datalist based on key or value
+            const selectedOption = Array.from(datalist.options).find(option =>
+                option.value.toLowerCase() === inputValue || option.dataset.value.toLowerCase() === inputValue
+            );
+
+            if (selectedOption) {
+                // If a matching value is found, update the selected value input with the key
+                selectedValueInput.value = selectedOption.value;
+            } else {
+                // Clear the selected input value if no match is found
+                selectedValueInput.value = '';
+            }
+        });
+
+        searchInput.addEventListener("change", function () {
+            const inputValue = searchInput.value;
+            const datalist = document.getElementById("jsonValuesRetailer");
+
+            // Find the selected value in the datalist
+            const selectedOption = Array.from(datalist.options).find(option => option.value === inputValue);
+
+            if (selectedOption) {
+                // Update the search input with the selected key's value
+                searchInput.value = selectedOption.dataset.value;
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
