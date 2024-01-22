@@ -15,6 +15,11 @@
 
 <!--Activation of the test by an event when the user presses enter-->
 <body class="body" onkeydown="checkEnter(event)">
+<label class="toggle-container">
+        <input type="checkbox" onclick="toggleFunction()">
+      
+        <span class="toggle-slider"></span>
+      </label>
 <!--select of message types-->
 <div class="AllData">
     <h1>פרטי התעודה</h1>
@@ -238,14 +243,23 @@
 
 
 
-
+<!-- 
 <div id="Contrastdark" onclick="darkMode()">dark mode</div>
-<div id="Contrastbright" onclick="brightMode()">light mode</div>
+<div id="Contrastbright" onclick="brightMode()">light mode</div> -->
 
 
 
 <script>
-
+  function toggleFunction() {
+    var checkBox = document.querySelector('input[type="checkbox"]');
+    if (checkBox.checked) {
+     darkMode();
+   
+    } else {
+      brightMode();
+    }
+    
+  }
 
 
     function checkEnter(event) {
