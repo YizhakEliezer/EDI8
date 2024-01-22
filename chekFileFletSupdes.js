@@ -376,6 +376,7 @@ function chekFileFletSupdes() {
             addElement('מספר רשת שגוי');
             addElement(',מספר רשת שנמצא  בקובץ- '+isValidNumRetailer);
             addElement(".מספר רשת רצוי- "+numRetailer);
+            addElement("");
             const retailerIconX = document.getElementById('retailerIconX');
             retailerIconX.style.display = 'block';
         } else {
@@ -394,7 +395,8 @@ function chekFileFletSupdes() {
         if (!compareStringsIgnoreCaseAndSpace(isValidNumSupplier, numSupplier) && numSupplier!="") {
             addElement('מספר ספק שגוי');
             addElement(',מספר ספק שנמצא  בקובץ- '+isValidNumSupplier);
-            addElement(".מספר ספק רצוי- "+numSupplier)
+            addElement(".מספר ספק רצוי- "+numSupplier);
+            addElement("");
             const supplierIconX = document.getElementById('supplierIconX');
             supplierIconX.style.display = 'block';
         } else {
@@ -469,14 +471,15 @@ function chekFileFletSupdes() {
         if (numSupplierSubnetNumber==="" && numSupplier != "" && !compareStringsIgnoreCaseAndSpace(isValidNumSupplierSubnetNumber, numSupplier) && !compareStringsIgnoreCaseAndSpace(isValidNumSupplierSubnetNumber, numSupplierSubnetNumber)) {
             addElement('.אין התאמה בין ספק ראשי  לספק משני/תת ספק,הזן מספר תת ספק');
             addElement('.מספר ספק משני/תת ספק שנמצא  בקובץ- '+isValidNumSupplierSubnetNumber);
-
+            addElement("");
 
         }
 
         if (numSupplierSubnetNumber.trim() != "" && !compareStringsIgnoreCaseAndSpace(isValidNumSupplierSubnetNumber, numSupplierSubnetNumber)) {
             addElement('מספר  תת ספק  שגוי');
             addElement(',מספר תת ספק שנמצא  בקובץ- '+isValidNumSupplierSubnetNumber);
-            addElement(',מספר תת ספק רצוי- '+numSupplierSubnetNumber);
+           addElement(',מספר תת ספק רצוי- '+numSupplierSubnetNumber);
+            addElement("");
             const supplierSubnetNumberIconX = document.getElementById('supplierSubnetNumberIconX');
             supplierSubnetNumberIconX.style.display = 'block';
         } else {
