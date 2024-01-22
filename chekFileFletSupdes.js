@@ -134,10 +134,12 @@ function chekFileFletSupdes() {
                         if (surfaceIdentificationNumber.trim() === "") {
                             ItemDataBoolean = false;
                             addElement("מספר זיהוי משטח חסר " + (i + 1))
+                           addElement("")
                         }
                     } else {
                         constantValuesBarcodeBoolean = false;
                         addElement("תחילית מקט חסר או שגוי שורה " + (i + 1))
+                         addElement("")
                     }
                 }
             }
@@ -194,6 +196,7 @@ function chekFileFletSupdes() {
                 if (barcodeWithspaces.trim() === "") {
                     valuesBarcodeBoolean = false;
                     addElement("ברקוד חסר " + (r + 1));
+                     addElement("")
                 }
             }
         }
@@ -376,6 +379,7 @@ function chekFileFletSupdes() {
         //line 1
         if (!compareStringsIgnoreCaseAndSpace(generalLineHeader, ENV00101)) {
             addElement('ENV00101-ערך חסר');
+             addElement("")
         }
 
         if (!compareStringsIgnoreCaseAndSpace(isValidNumRetailer, numRetailer) && numRetailer!="") {
@@ -394,9 +398,11 @@ function chekFileFletSupdes() {
         if (!compareStringsIgnoreCaseAndSpace(MMDE02L, nameDocument) &&
             !compareStringsIgnoreCaseAndSpace(MMDE02R, nameDocument2)) {
             addElement(" MMDE02L-ערך חסר");
+             addElement("")
         }
         if (!compareStringsIgnoreCaseAndSpace(SUPDES, typeDocument)) {
             addElement('SUPDES-ערך חסר');
+             addElement("")
         }
         if (!compareStringsIgnoreCaseAndSpace(isValidNumSupplier, numSupplier) && numSupplier!="") {
             addElement('מספר ספק שגוי');
@@ -414,12 +420,14 @@ function chekFileFletSupdes() {
         //line 2
         if (!compareStringsIgnoreCaseAndSpace(firstLineDetailsFile, HEAD0101)) {
             addElement('HEAD0101-ערך חסר');
+             addElement("")
         }
 
 
         if (isValidNumMessage.trim() === "" || numMessage.trim() != "" &&
             !isValidNumMessage.trim().includes(numMessage.trim())) {
             addElement('מספר תעודה שגוי');
+             addElement("")
             const messageIconX = document.getElementById('messageIconX');
             messageIconX.style.display = 'block';
         } else {
@@ -452,27 +460,33 @@ function chekFileFletSupdes() {
         if (booleneLength === false || isNaN(booleneLength)) {
             addElement('פורמט תאריך שגוי,מספר התווים או מיקום התאריך בקובץ שגוי.');
             addElement(" פורמט תאריך שנמצא- "+timeDocument);
+             addElement("")
         }
 
         if (year < 2023 || isNaN(year)) {
             addElement('פורמט תאריך שנה שגוי');
                addElement(" פורמט שנה שנמצא- "+yearS);
+             addElement("")
         }
         if (month < 1 || month > 12 || isNaN(month)) {
             addElement('פורמט תאריך חודש שגוי');
                addElement(" פורמט חודש שנמצא- "+monthS);
+             addElement("")
         }
         if (day < 1 || day > 31 || isNaN(day)) {
             addElement('פורמט תאריך יום שגוי');
                addElement(" פורמט יום שנמצא- "+dayS);
+             addElement("")
         }
         if (hour < 0 || hour > 24 || isNaN(hour)) {
             addElement('פורמט תאריך שעה שגוי');
                addElement(" פורמט שעה שנמצא- "+hourS);
+             addElement("")
         }
         if (minute < 0 || minute > 59 || isNaN(minute)) {
             addElement('פורמט תאריך דקה שגוי');
                addElement(" פורמט דקה שנמצא- "+minuteS);
+             addElement("")
         }
 
 
@@ -528,14 +542,17 @@ function chekFileFletSupdes() {
         //line 3
         if (!compareStringsIgnoreCaseAndSpace(firstLine3row, LINE0001)) {
             addElement('LINE0001-ערך חסר');
+             addElement("")
         }
 
         if (!compareStringsIgnoreCaseAndSpace(lestline, HEAD9901)) {
             addElement('HEAD9901-ערך חסר');
+             addElement("")
         }
 
         if (!compareStringsIgnoreCaseAndSpace(lestline1, ENV00201)) {
             addElement('ENV00201-ערך חסר');
+             addElement("")
         }
 
 
