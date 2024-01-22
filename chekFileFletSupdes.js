@@ -230,6 +230,12 @@ function chekFileFletSupdes() {
         const hour = Number(timeDocument.substring(8, 10));
         const minute = Number(timeDocument.substring(10, 12));
 
+        
+         const yearS = String(timeDocument.substring(0, 4));
+        const monthS = String(timeDocument.substring(4, 6));
+        const dayS = String(timeDocument.substring(6, 8));
+        const hourS = String(timeDocument.substring(8, 10));
+        const minuteS = String(timeDocument.substring(10, 12));
 
         //NumSupplierSubnetNumber+NumBranchRetailer
         const isValidNumSupplierSubnetNumber = lines[1].substring(104, 119);
@@ -450,23 +456,23 @@ function chekFileFletSupdes() {
 
         if (year < 2023 || isNaN(year)) {
             addElement('פורמט תאריך שנה שגוי');
-               addElement(" פורמט שנה שנמצא- "+year);
+               addElement(" פורמט שנה שנמצא- "+yearS);
         }
         if (month < 1 || month > 12 || isNaN(month)) {
             addElement('פורמט תאריך חודש שגוי');
-               addElement(" פורמט חודש שנמצא- "+month);
+               addElement(" פורמט חודש שנמצא- "+monthS);
         }
         if (day < 1 || day > 31 || isNaN(day)) {
             addElement('פורמט תאריך יום שגוי');
-               addElement(" פורמט יום שנמצא- "+day);
+               addElement(" פורמט יום שנמצא- "+dayS);
         }
         if (hour < 0 || hour > 24 || isNaN(hour)) {
             addElement('פורמט תאריך שעה שגוי');
-               addElement(" פורמט שעה שנמצא- "+hour);
+               addElement(" פורמט שעה שנמצא- "+hourS);
         }
         if (minute < 0 || minute > 59 || isNaN(minute)) {
             addElement('פורמט תאריך דקה שגוי');
-               addElement(" פורמט דקה שנמצא- "+minute);
+               addElement(" פורמט דקה שנמצא- "+minuteS);
         }
 
 
