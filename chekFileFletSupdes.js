@@ -445,28 +445,28 @@ function chekFileFletSupdes() {
 
         if (booleneLength === false || isNaN(booleneLength)) {
             addElement('פורמט תאריך שגוי,מספר התווים או מיקום התאריך בקובץ שגוי.');
-            addElement(" -פורמט תאריך שנמצא"+timeDocument);
+            addElement(" פורמט תאריך שנמצא- "+timeDocument);
         }
 
         if (year < 2023 || isNaN(year)) {
             addElement('פורמט תאריך שנה שגוי');
-               addElement(" -פורמט שנה שנמצא"+year);
+               addElement(" פורמט שנה שנמצא- "+year);
         }
         if (month < 1 || month > 12 || isNaN(month)) {
             addElement('פורמט תאריך חודש שגוי');
-               addElement(" -פורמט חודש שנמצא"+month);
+               addElement(" פורמט חודש שנמצא- "+month);
         }
         if (day < 1 || day > 31 || isNaN(day)) {
             addElement('פורמט תאריך יום שגוי');
-               addElement(" -פורמט יום שנמצא"+day);
+               addElement(" פורמט יום שנמצא- "+day);
         }
         if (hour < 0 || hour > 24 || isNaN(hour)) {
             addElement('פורמט תאריך שעה שגוי');
-               addElement(" -פורמט שעה שנמצא"+hour);
+               addElement(" פורמט שעה שנמצא- "+hour);
         }
         if (minute < 0 || minute > 59 || isNaN(minute)) {
             addElement('פורמט תאריך דקה שגוי');
-               addElement(" -פורמט דקה שנמצא"+minute);
+               addElement(" פורמט דקה שנמצא- "+minute);
         }
 
 
