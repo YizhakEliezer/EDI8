@@ -31,6 +31,14 @@
     transition: 0.4s;
   }
 
+#screenMode{
+    color:#5b737f;
+    position:absolute;
+    top:105px;
+    left:80px;
+   font-weight:bold;
+}
+
   .toggle-slider:before {
     position: absolute;
     content: "";
