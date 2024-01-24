@@ -8,6 +8,7 @@
     <script type="text/javascript" src="chekFileFletSupdes.js"></script>
     <script type="text/javascript" src="chekFileHashavshevtSupdes.js"></script>
     <script type="text/javascript" src="Contrast.js"></script>
+    <script type="text/javascript" src="chekFileFletOrder.js"></script>
     <!--    Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,10 +17,10 @@
 <!--Activation of the test by an event when the user presses enter-->
 <body class="body" onkeydown="checkEnter(event)">
 <label class="toggle-container">
-        <input type="checkbox" onclick="toggleFunction()">
-      
-        <span class="toggle-slider"></span>
-      </label>
+    <input type="checkbox" onclick="toggleFunction()">
+
+    <span class="toggle-slider"></span>
+</label>
 <p id="screenMode">screen mode</p>
 <!--select of message types-->
 <div class="AllData">
@@ -120,7 +121,7 @@
             <!--File upload icon+css-->
             <div class="iconAndhandleDrop">
                 <i class="material-icons upload-icon" id="icons" onclick="triggerFileInput()"
-                 >cloud_upload</i>
+                >cloud_upload</i>
                 <p style="position: relative;top:-10px;font-size: 20px;" id="iconAndhandleDropP"
                    onclick="triggerFileInput()">גרור קובץ לכאן
                     <br>או</p>
@@ -244,23 +245,23 @@
 
 
 
-<!-- 
+<!--
 <div id="Contrastdark" onclick="darkMode()">dark mode</div>
 <div id="Contrastbright" onclick="brightMode()">light mode</div> -->
 
 
 
 <script>
-  function toggleFunction() {
-    var checkBox = document.querySelector('input[type="checkbox"]');
-    if (checkBox.checked) {
-     darkMode();
-   
-    } else {
-      brightMode();
+    function toggleFunction() {
+        var checkBox = document.querySelector('input[type="checkbox"]');
+        if (checkBox.checked) {
+            darkMode();
+
+        } else {
+            brightMode();
+        }
+
     }
-    
-  }
 
 
     function checkEnter(event) {
@@ -268,11 +269,28 @@
         if (AllData.style.display === "block") {
             if (event.key === 'Enter') {
                 var selectedOption = document.getElementById("menuTypeStructure").value;
+                var fileTypeC = document.getElementById("menuTypefile").value;
                 if (selectedOption === "fileStructure") {
                     alert("לא נבחר מבנה המסר לבדיקה");
                 } else if (selectedOption === "fletFile") {
-                    chekFileFletSupdes();
-                } else if (selectedOption === "hashavshevt") {
+                    if (fileTypeC==="fileType"){
+                        alert("לא נבחר סוג המסר לבדיקה");
+                    }
+                    else if (fileTypeC === "supdes"){
+                        chekFileFletSupdes();
+                    }
+                    else if (fileTypeC === "order"){
+                        chekFileFletOrder();
+                    }
+                    else if (fileTypeC === "mmdr"){
+                        console.log("mmdr")
+                    }
+                    else if (fileTypeC === "return"){
+                        console.log("return")
+                    }
+
+                }
+                else if (selectedOption === "hashavshevt") {
                     chekFileHashavshevtSupdes();
                 }
 
@@ -280,6 +298,23 @@
 
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -403,25 +438,11 @@
         });
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
 
 </body>
 </html>
-
 
 
 

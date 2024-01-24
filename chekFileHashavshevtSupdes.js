@@ -164,9 +164,17 @@ function chekFileHashavshevtSupdes() {
             const monthDataTime = Number(dataTime.substring(3, 5));
             const yearDataTime = Number(dataTime.substring(6, 8));
 
+            const dayDataTimeS = String(dataTime.substring(0, 2));
+            const monthDataTimeS = String(dataTime.substring(3, 5));
+            const yearDataTimeS = String(dataTime.substring(6, 8));
+
             const dayDataTime2 = Number(dataTime2.substring(0, 2));
             const monthDataTime2 = Number(dataTime2.substring(3, 5));
             const yearDataTime2 = Number(dataTime2.substring(6, 8));
+
+            const dayDataTime2S = String(dataTime2.substring(0, 2));
+            const monthDataTime2S = String(dataTime2.substring(3, 5));
+            const yearDataTime2S = String(dataTime2.substring(6, 8));
 
 
             const isValidnumMessage = variables[numsplitSupdes].split('\n')[i].substring(151, 158);
@@ -176,6 +184,9 @@ function chekFileHashavshevtSupdes() {
             if (!compareStringsIgnoreCaseAndSpace(isValidNumSupplier, numSupplier) && numSupplier!="") {
                 numSupplierBoolean = false;
                 addElement("מספר ספק שגוי שורה " + (i + 1));
+                addElement(',מספר ספק שנמצא  בקובץ- '+isValidNumSupplier);
+                addElement(".מספר ספק רצוי- "+numSupplier);
+                addElement("");
                 const supplierIconX = document.getElementById('supplierIconX');
                 supplierIconX.style.display = 'block';
             }
@@ -184,6 +195,9 @@ function chekFileHashavshevtSupdes() {
             if (!compareStringsIgnoreCaseAndSpace(isValidNumRetailer, numRetailer) && numRetailer!="") {
                 isValidNumRetailerBoolean = false;
                 addElement("מספר רשת שגוי שורה " + (i + 1));
+                addElement(',מספר רשת שנמצא  בקובץ- '+isValidNumRetailer);
+                addElement(".מספר רשת רצוי- "+numRetailer);
+                addElement("");
                 const retailerIconX = document.getElementById('retailerIconX');
                 retailerIconX.style.display = 'block';
             }
@@ -197,7 +211,9 @@ function chekFileHashavshevtSupdes() {
             // }
             if (numSupplierSubnetNumber.trim() === "" && !compareStringsIgnoreCaseAndSpace(isValidNumSupplierSubnetNumber, numSupplier) && numSupplier!="") {
                 isValidNumSupplierSubnetNumberBoolean = false;
-                addElement("מספר ספק משני שגוי שורה " + (i + 1));
+                addElement(".אין התאמה בין ספק ראשי  לספק משני/תת ספק,בשורה " + (i + 1));
+                addElement('.מספר ספק משני/תת ספק שנמצא  בקובץ- '+isValidNumSupplierSubnetNumber);
+                addElement("");
             }
 
 
@@ -211,6 +227,9 @@ function chekFileHashavshevtSupdes() {
             if (numSupplierSubnetNumber.trim() != "" && !compareStringsIgnoreCaseAndSpace(isValidNumSupplierSubnetNumber, numSupplierSubnetNumber)) {
                 numSupplierSubnetNumberBoolean = false;
                 addElement("מספר תת ספק  שגוי שורה " + (i + 1));
+                addElement(',מספר תת ספק שנמצא  בקובץ- '+isValidNumSupplierSubnetNumber);
+                addElement(',מספר תת ספק רצוי- '+numSupplierSubnetNumber);
+                addElement("");
                 const supplierSubnetNumberIconX = document.getElementById('supplierSubnetNumberIconX');
                 supplierSubnetNumberIconX.style.display = 'block';
             }
@@ -218,70 +237,94 @@ function chekFileHashavshevtSupdes() {
             if (numpPackaging.trim() === "") {
                 numpPackagingBoolean = false;
                 addElement("מספר אריזות חסר שורה " + (i + 1));
+                addElement("");
             }
 
             if (barcode.trim() === "") {
                 matchNumBranchBoolean = false;
                 addElement("ברקוד חסר שורה " + (i + 1));
+                addElement("");
             }
 
 
             if (numBranch1.trim() != numBranch2.trim()) {
                 numSupplierSubnetNumberBoolean = false;
                 addElement("חוסר התאמה במספר מפתח בשורה " + (i + 1));
+                addElement("");
             }
 
 
             if (numBranch1.trim() === "") {
                 numBranch1Boolean = false;
                 addElement("מספר מפתח חסר שורה " + (i + 1));
+                addElement("");
             }
 
             if (numBranch2.trim() === "") {
                 numBranch2Boolean = false;
                 addElement("מספר מפתח חסר שורה " + (i + 1));
+                addElement("");
             }
 
 
             if (dataTime.trim().length != 8 || String(dataTime.substring(2, 3)) != "/" || String(dataTime.substring(5, 6)) != "/") {
                 pormatTime1Boolean = false;
-                addElement("פורמט תאריך משלוח שגוי " + (i + 1));
+                // addElement("פורמט תאריך משלוח שגוי " + (i + 1));
+                addElement('פורמט תאריך משלוח שגוי,מספר התווים או המיקום בקובץ שגוי שורה '+ (i + 1));
+                addElement(" פורמט תאריך שנמצא- "+dataTime);
+                addElement("")
             }
 
 
             if (dataTime2.trim().length != 8 || String(dataTime2.substring(2, 3)) != "/" || String(dataTime2.substring(5, 6)) != "/") {
                 pormatTime2Boolean = false;
-                addElement("פורמט תאריך תוקף שגוי " + (i + 1));
+                // addElement("פורמט תאריך תוקף שגוי " + (i + 1));
+                addElement('פורמט תאריך תוקף שגוי,מספר התווים או המיקום בקובץ שגוי שורה '+ (i + 1));
+                addElement(" פורמט תאריך שנמצא- "+dataTime2);
+               addElement("")
             }
 
 
             if (dayDataTime < 0 || dayDataTime > 31) {
                 dayDataTimeBoolean = false;
                 addElement("פורמט תאריך משלוח שדה -יום, שגוי. שורה " + (i + 1));
+                addElement(" פורמט יום שנמצא- "+dayDataTime);
+                addElement("")
             }
-
+                console.log(monthDataTimeS)
+                 console.log(monthDataTime)
             if (monthDataTime < 1 || monthDataTime > 12) {
                 monthDataTimeBoolean = false;
                 addElement("פורמט תאריך משלוח שדה -חודש, שגוי. שורה " + (i + 1));
+                addElement(" פורמט חודש שנמצא- "+monthDataTime);
+                addElement("")
             }
             if (yearDataTime < 23) {
                 yearDataTimeBoolean = false;
                 addElement("פורמט תאריך משלוח שדה -שנה, שגוי. שורה " + (i + 1));
+                addElement(" פורמט שנה שנמצא- "+yearDataTime);
+                addElement("")
             }
 
 
             if (dayDataTime2 < 0 || dayDataTime2 > 31) {
                 dayDataTime2Boolean = false;
                 addElement("פורמט תאריך תוקף שדה -יום, שגוי. שורה " + (i + 1));
+                addElement(" פורמט יום שנמצא- "+dayDataTime2);
+                addElement("")
             }
 
             if (monthDataTime2 < 1 || monthDataTime2 > 12) {
                 monthDataTime2Boolean = false;
                 addElement("פורמט תאריך תוקף שדה -חודש, שגוי. שורה " + (i + 1));
+                addElement(" פורמט חודש שנמצא- "+monthDataTime2);
+                addElement("")
             }
             if (yearDataTime2 < 23) {
                 yearDataTime2Boolean = false;
                 addElement("פורמט תאריך תוקף שדה -שנה, שגוי. שורה " + (i + 1));
+                addElement(" פורמט שנה שנמצא- "+yearDataTime2);
+                addElement("")
             }
 
 
@@ -295,6 +338,7 @@ function chekFileHashavshevtSupdes() {
                 if (!compareStringsIgnoreCaseAndSpace(isValidnumMessage, numMessage)) {
                     numMessageBoolean = false;
                     addElement("מספר תעודה שגוי שורה " + (i + 1));
+                    addElement("");
                     const messageIconX = document.getElementById('messageIconX');
                     messageIconX.style.display = 'block';
                 }

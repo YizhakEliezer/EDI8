@@ -1,5 +1,5 @@
 //function to chekFile
-function chekFileFletSupdes() {
+function chekFileFletOrder() {
     // fileChek.value= splitSupdes[numsplitSupdes];
     numsplitSupdes = 0;
 //Clear the result arrays before each test
@@ -105,9 +105,9 @@ function chekFileFletSupdes() {
 
         //constant values line 1
         const ENV00101 = "ENV00101";
-        const nameDocument = "MMDE02L";
-        const nameDocument2 = "MMDE02R";
-        const typeDocument = "SUPDES";
+        const nameDocument = "MMORDML";
+        const nameDocument2 = "MMORDMR";
+        const typeDocument = "MMOR01";
         //constant values line 2
         const HEAD0101 = "HEAD0101";
         //constant values line 3
@@ -217,11 +217,11 @@ function chekFileFletSupdes() {
 
         //valueFromFile line 1
         const generalLineHeader = lines[0].substring(0, 8);
-        const isValidNumRetailer = lines[0].substring(8, 23);
+        const isValidNumRetailer = lines[0].substring(49, 64);
         const MMDE02L = lines[0].substring(23, 33);
         const MMDE02R = lines[0].substring(23, 33);
         const SUPDES = lines[0].substring(33, 47);
-        const isValidNumSupplier = lines[0].substring(49, 64);
+        const isValidNumSupplier = lines[0].substring(8, 23);
 
 
         //valueFromFile line 2
@@ -565,55 +565,5 @@ function chekFileFletSupdes() {
     } catch (v) {
     }
 
-    // function supdes() {
-    //     console.log("Supdes function");
-    //     // Add your logic for Supdes here
-    // }
-    //
-    // function order() {
-    //     console.log("Order function");
-    //     // Add your logic for Order here
-    // }
-    //
-    // // Event listener for structure selection
-    // document.getElementById('menuTypeStructure').addEventListener('change', function () {
-    //     var selectedStructureValue = this.value;
-    //
-    //     // Check the selected value and call the appropriate function
-    //     switch (selectedStructureValue) {
-    //         case 'fletFile':
-    //
-    //
-    //
-    //             document.getElementById('menuTypefile').addEventListener('change', function () {
-    //                 var selectedFileValue = this.value;
-    //
-    //                 // Check the selected value and call the appropriate function
-    //                 switch (selectedFileValue) {
-    //                     case 'order':
-    //                         order();
-    //                         break;
-    //                     // Add cases for other options as needed
-    //                     case 'supdes':
-    //                         supdes();
-    //                         break;
-    //                     // Default case if the selected option doesn't match any case
-    //                     default:
-    //                         console.log("Selected an option without a specific function.");
-    //                         break;
-    //                 }
-    //             });
-    //
-    //
-    //
-    //             break;
-    //         // Add cases for other options as needed
-    //
-    //         // Default case if the selected option doesn't match any case
-    //         default:
-    //             console.log("Selected an option without a specific function.");
-    //             break;
-    //     }
-    // });
 
 }
