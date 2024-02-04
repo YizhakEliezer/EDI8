@@ -326,6 +326,7 @@ input:checked + .toggle-slider:before {
 #file-name {
     margin-top: 50px;
     font-weight: bold;
+    line-break:anywhere;
 }
 
 
